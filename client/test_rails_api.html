@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TEST</title>
+</head>
+<body>
+<script>
+  console.log("hello world");
+  var request = new XMLHttpRequest();
+  request.open("GET", "http://localhost:4000/todos");
+  request.setRequestHeader("ContentType", "application/json");
+
+  request.onreadystatechange = function() {
+    if (request.status >= 200 && request.status < 400) {
+      console.log("Success!")
+      console.log(request.responseText);
+    } else if (0 === request.status) {
+      console.log("Server could not be reached.")
+    } else {
+      console.log("A connection error occurred.")
+    }
+  };
+
+  request.send();
+</script>
+</body>
+</html>
